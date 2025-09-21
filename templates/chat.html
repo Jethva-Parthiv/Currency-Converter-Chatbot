@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>💱 Currency Chatbot</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: #121212;
+      color: #eee;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .chatbox {
+      width: 620px;
+      background: #1e1e1e;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+      height:500px;
+    }
+
+    .header {
+      padding: 15px;
+      text-align: center;
+      font-size: 1.3em;
+      font-weight: bold;
+      background: #272727;
+      border-bottom: 1px solid #333;
+    }
+
+    .messages {
+      flex: 1;
+      padding: 15px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .msg {
+      max-width: 80%;
+      padding: 10px 14px;
+      border-radius: 12px;
+      line-height: 1.4em;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .msg.user {
+      align-self: flex-end;
+      background: #2b7a78;
+      color: #fff;
+      border-bottom-right-radius: 0;
+    }
+
+    .msg.bot {
+      align-self: flex-start;
+      background: #333;
+      color: #eee;
+      border-bottom-left-radius: 0;
+    }
+
+    .msg .icon {
+      font-size: 1.4em;
+    }
+
+    .input-area {
+      display: flex;
+      border-top: 1px solid #333;
+      padding: 10px;
+      background: #272727;
+    }
+
+    .input-area input {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      background: #1a1a1a;
+      color: #eee;
+      outline: none;
+    }
+
+    .input-area button {
+      margin-left: 8px;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 6px;
+      background: #2b7a78;
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .input-area button:hover {
+      background: #3b9d9a;
+    }
+
+    /* Skeleton loader */
+    .skeleton {
+      width: 120px;
+      height: 20px;
+      border-radius: 6px;
+      background: linear-gradient(90deg, #333 25%, #444 50%, #333 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite;
+    }
+
+        /* Scrollbar styling */
+.messages {
+  height: 300px;
+  overflow-y: auto;
+  margin-bottom: 10px;
+  padding-right: 8px;
+  scrollbar-width: thin;               /* Firefox */
+  scrollbar-color: #6c63ff #1e1e2f;    /* thumb | track */
+}
+
+/* Chrome, Edge, Safari */
+.messages::-webkit-scrollbar {
+  width: 8px;
+}
+
+.messages::-webkit-scrollbar-track {
+  background: #1e1e2f;                 /* track color */
+  border-radius: 10px;
+}
+
+.messages::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #6c63ff, #3a3a99); /* thumb color */
+  border-radius: 10px;
+}
+
+.messages::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #817dff, #5754c9); /* hover effect */
+}
+
+
+    @keyframes shimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="chatbox">
+    <div class="header">🤖 Currency Chatbot</div>
+    <div id="messages" class="messages"></div>
+    <div class="input-area">
+      <input id="input" type="text" placeholder="Type your message...">
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+  <script>
+    function addMessage(text, sender, animated=false) {
+      const msg = document.createElement("div");
+      msg.className = "msg " + sender;
+
+      const icon = document.createElement("span");
+      icon.className = "icon";
+      icon.innerText = sender === "user" ? "👤" : "🤖";
+
+      const content = document.createElement("span");
+      if (animated) {
+        typeText(content, text);
+      } else {
+        content.innerText = text;
+      }
+
+      msg.appendChild(icon);
+      msg.appendChild(content);
+      document.getElementById("messages").appendChild(msg);
+      msg.scrollIntoView();
+    }
+
+    function addSkeleton() {
+      const msg = document.createElement("div");
+      msg.className = "msg bot";
+      msg.id = "skeleton";
+
+      const icon = document.createElement("span");
+      icon.className = "icon";
+      icon.innerText = "🤖";
+
+      const skeleton = document.createElement("div");
+      skeleton.className = "skeleton";
+
+      msg.appendChild(icon);
+      msg.appendChild(skeleton);
+      document.getElementById("messages").appendChild(msg);
+      msg.scrollIntoView();
+    }
+
+    function replaceSkeletonWithMessage(text) {
+      const skeleton = document.getElementById("skeleton");
+      if (skeleton) {
+        skeleton.remove();
+      }
+      addMessage(text, "bot", true);
+    }
+
+    function sendMessage() {
+      const input = document.getElementById("input");
+      const text = input.value.trim();
+      if (!text) return;
+      addMessage(text, "user");
+      input.value = "";
+
+      // add skeleton loader
+      addSkeleton();
+
+      fetch("/chat", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({message: text})
+      })
+      .then(r => r.json())
+      .then(data => replaceSkeletonWithMessage(data.reply))
+      .catch(() => replaceSkeletonWithMessage("⚠️ Error: could not reach server."));
+    }
+
+    function typeText(element, text) {
+  let i = 0;
+  function typing() {
+    if (i < text.length) {
+      element.textContent = text.substring(0, i + 1);
+      i++;
+      setTimeout(typing, 30);
+    }
+  }
+  typing();
+}
+
+
+const input = document.getElementById("input");
+
+// Trigger sendMessage() when Enter is pressed
+input.addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+        event.preventDefault();  // Prevent new line
+        sendMessage();
+    }
+});
+
+  </script>
+</body>
+</html>
