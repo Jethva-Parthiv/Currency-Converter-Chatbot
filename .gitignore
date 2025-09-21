@@ -3,3 +3,18 @@
     env/
     ENV/
     .venv/
+
+# Virtual environment
+venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Logs and database
+*.log
+*.sqlite3
+
+# IDE settings
+.vscode/
+.idea/
