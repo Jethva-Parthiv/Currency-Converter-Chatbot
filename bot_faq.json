@@ -1,0 +1,174 @@
+[
+    {
+        "question": "hello",
+        "answers": [
+            "Hello! How can I help you today?",
+            "Hi there! Nice to see you.",
+            "Hey! How’s it going?",
+            "Hello! Ready to chat or help with currencies."
+        ]
+    },
+       {
+        "question": "hi",
+        "answers": [
+            "Hello! How can I help you today?",
+            "Hi there! Nice to see you.",
+            "Hey! How’s it going?",
+            "Hello! Ready to chat or help with currencies."
+        ]
+    },
+    {
+        "question": "how are you?",
+        "answers": [
+            "I'm just a bot, but I'm feeling helpful! How about you?",
+            "I’m doing great! Ready to assist you.",
+            "I’m fine and happy to chat with you!",
+            "I’m good! How’s your day going?"
+        ]
+    },
+    {
+        "question": "what is your name?",
+        "answers": [
+            "I am your friendly CurrencyBot!",
+            "People call me CurrencyBot.",
+            "I go by the name CurrencyBot.",
+            "You can call me CurrencyBot!"
+        ]
+    },
+    {
+        "question": "who created you?",
+        "answers": [
+            "I was created by Parthiv.",
+            "Parthiv made me to help with currency conversions and chatting.",
+            "My creator is Parthiv.",
+            "I’m built by Parthiv to assist you."
+        ]
+    },
+    {
+        "question": "what can you do?",
+        "answers": [
+            "I can convert currencies and answer questions about myself.",
+            "I help with currency conversions and chatting with users.",
+            "I can tell you exchange rates and chat about general topics.",
+            "I can convert money and have friendly conversations."
+        ]
+    },
+    {
+        "question": "thank you",
+        "answers": [
+            "You're welcome! Glad I could help.",
+            "No problem! Happy to assist.",
+            "Anytime! I’m here to help.",
+            "My pleasure! Let me know if you need anything else."
+        ]
+    },
+        {
+        "question": "thank",
+        "answers": [
+            "You're welcome! Glad I could help.",
+            "No problem! Happy to assist.",
+            "Anytime! I’m here to help.",
+            "My pleasure! Let me know if you need anything else."
+        ]
+    },
+        {
+        "question": "thanks",
+        "answers": [
+            "You're welcome! Glad I could help.",
+            "No problem! Happy to assist.",
+            "Anytime! I’m here to help.",
+            "My pleasure! Let me know if you need anything else."
+        ]
+    },
+    {
+        "question": "can you tell jokes?",
+        "answers": [
+            "I can try! Why did the currency go to school? To improve its value!",
+            "Sure! Want to hear a currency joke? Here goes: Money talks, but all mine says is goodbye!",
+            "I love jokes! Here's one: Why did the dollar break up with the rupee? It found a stronger bond!",
+            "Of course! How do currencies party? They exchange notes!"
+        ]
+    },
+    {
+        "question": "how do I convert USD to INR? ",
+        "answers": [
+        "Just type something like '10 USD in INR', and I will give you the conversion.",
+        "You can enter '10 USD in INR' and I'll tell you the equivalent in INR.",
+        "Type the amount followed by 'USD in INR', and I will calculate it for you.",
+        "Simply write '10 USD in INR', and I will provide the current exchange rate."
+        ]
+    },
+    {
+        "question": "bye",
+        "answers": [
+            "Goodbye! Have a great day!",
+            "See you later! Take care.",
+            "Bye! Hope to chat with you again soon.",
+            "Farewell! Stay safe and happy."
+        ]
+    },
+    {
+        "question": "goodbye",
+        "answers": [
+            "Goodbye! Have a great day!",
+            "See you later! Take care.",
+            "Bye! Hope to chat with you again soon.",
+            "Farewell! Stay safe and happy."
+        ]
+    },
+    {
+        "question": "byebye",
+        "answers": [
+            "Goodbye! Have a great day!",
+            "See you later! Take care.",
+            "Bye! Hope to chat with you again soon.",
+            "Farewell! Stay safe and happy."
+        ]
+    },
+    {
+        "question": "see you soon",
+        "answers": [
+            "Goodbye! Have a great day!",
+            "See you later! Take care.",
+            "Bye! Hope to chat with you again soon.",
+            "Farewell! Stay safe and happy."
+        ]
+    },
+    {
+        "question": "okay",
+        "answers": [
+            "Okay!",
+            "Alright!",
+            "Got it!",
+            "Sure thing!",
+            "Okay, noted!",
+            "Sounds good!",
+            "Alright then!"
+        ]
+    },
+    {
+        "question": "ok",
+        "answers": [
+            "Okay!",
+            "Alright!",
+            "Got it!",
+            "Sure thing!",
+            "Okay, noted!",
+            "Sounds good!",
+            "Alright then!"
+        ]
+    },
+    {
+        "question": "alright",
+        "answers": [
+            "Okay!",
+            "Alright!",
+            "Got it!",
+            "Sure thing!",
+            "Okay, noted!",
+            "Sounds good!",
+            "Alright then!"
+        ]
+    }
+
+]
